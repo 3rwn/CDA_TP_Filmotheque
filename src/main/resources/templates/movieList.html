@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>movie</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/uikit/css/uikit.min.css"/>
+    <script src="/uikit/js/uikit.min.js"></script>
+    <script src="/uikit/js/uikit-icons.min.js"></script>
+</head>
+<body>
+<header>
+    <h1 class="uk-heading-line uk-text-center"><span>Filmothèque</span></h1>
+</header>
+<nav class="uk-navbar-container">
+    <div class="uk-container">
+        <div class="uk-navbar">
+            <div class="uk-navbar-left">
+                <ul class="uk-navbar-nav">
+                    <li><a th:href="@{'/'}">Home</a></li>
+                    <li class="uk-active"><a th:href="@{'/movies'}">Liste des films</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</nav>
+
+<section>
+    <div class="uk-container uk-container-small">
+        <h2 class="uk-text-center">Films</h2>
+        <div class="uk-child-width-1-2@s uk-grid-match uk-grid">
+            <div th:each="movie : ${movies}">
+                <div class="uk-card uk-card-hover uk-card-body">
+                    <h3 class="uk-card-title" th:text="${movie.title}"></h3>
+                    <p th:text="'Année : '+ ${movie.year}"></p>
+                    <p th:text="${movie.duration} + ' minutes'"></p>
+                    <p th:text="${movie.director.firstName}  + ' ' + ${movie.director.lastName}"></p>
+                    <p th:text="${movie.genre.label}"></p>
+
+                    <a class="uk-link-heading" th:href="@{'/movie/' + ${movie.id}}">Voir film</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<footer>
+    <div class="uk-background-muted uk-height-large">
+        <div class="uk-card uk-card-default uk-card-body uk-text-center uk-position-z-index" uk-sticky="position: bottom; end: !.uk-height-large">@Filmothèque</div>
+    </div>
+</footer>
+</body>
+</html>

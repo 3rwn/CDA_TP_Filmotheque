@@ -1,4 +1,4 @@
-package fr.eni.movielibrary.bll.service;
+package fr.eni.movielibrary.bll;
 
 import fr.eni.movielibrary.bo.Genre;
 import fr.eni.movielibrary.bo.Movie;

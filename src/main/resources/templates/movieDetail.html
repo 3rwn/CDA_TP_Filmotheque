@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Movie List</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/uikit/css/uikit.min.css"/>
+    <script src="/uikit/js/uikit.min.js"></script>
+    <script src="/uikit/js/uikit-icons.min.js"></script>
+</head>
+<body>
+<header>
+    <h1 class="uk-heading-line uk-text-center"><span>Filmothèque</span></h1>
+</header>
+<nav class="uk-navbar-container">
+    <div class="uk-container">
+        <div class="uk-navbar">
+            <div class="uk-navbar-left">
+                <ul class="uk-navbar-nav">
+                    <li><a th:href="@{'/'}">Home</a></li>
+                    <li class="uk-active"><a th:href="@{'/movies'}">Liste des films</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</nav>
+<section class="uk-section uk-article">
+    <div class="uk-container uk-container-small uk-background-primary">
+        <h2 class="uk-text-bold uk-h1 uk-margin-remove-adjacent uk-margin-remove-top" th:text="${movie.title}"></h2>
+        <form class="uk-form-horizontal uk-margin-large" action="/movie" method="post" th:object="${formMovie}">
+
+            <fieldset class="uk-fieldset">
+
+                <legend class="uk-legend">Film</legend>
+                <div class="uk-margin">
+                    <label class="uk-form-label" for="title">Titre</label>
+                    <input class="uk-input uk-form-width-large" id="title" type="text" th:field="${movie.title}"
+                           placeholder="titre"
+                           aria-label="Default">
+                </div>
+                <label class="uk-form-label" for="Année">Année</label>
+                <div class="uk-margin">
+                    <input class="uk-input uk-form-width-large" id="Année" type="text" th:field="${movie.year}"
+                           placeholder="Année"
+                           aria-label="Default">
+                </div>
+                <label class="uk-form-label" for="Genre">Genre</label>
+                <div class="uk-margin">
+                    <input class="uk-input uk-form-width-large" id="Genre" type="text" th:field="${movie.genre.label}"
+                           placeholder="Genre"
+                           aria-label="Default">
+                </div>
+                <label class="uk-form-label" for="Réalisateur">Réalisateur</label>
+                <div class="uk-margin">
+                    <input class="uk-input uk-form-width-large" id="Réalisateur" type="text"
+                           th:value="${movie.director.firstName + ' ' + movie.director.lastName}"
+                           placeholder="Réalisateur"
+                           aria-label="Default">
+                </div>
+                <label class="uk-form-label" for="Durée">Durée</label>
+                <div class="uk-margin">
+                    <input class="uk-input uk-form-width-large" id="Durée" type="text" th:field="${movie.duration}"
+                           placeholder="Durée"
+                           aria-label="Default">
+                </div>
+                <div class="uk-margin">
+                    <label class="uk-form-label" for="Acteurs">Acteurs</label>
+                    <select class="uk-select uk-form-width-large" multiple id="Acteurs">
+                        <option th:each="actor : ${movie.actors}" th:text="${actor.lastName + ' ' + actor.firstName}">
+                        </option>
+                    </select>
+                </div>
+                <label class="uk-form-label" for="Synopsis">Synopsis</label>
+                <div class="uk-margin">
+                    <textarea class="uk-textarea uk-form-width-large" id="Synopsis" type="text"
+                              th:field="${movie.synopsis}"
+                              placeholder="Synopsis"
+                              aria-label="Default"></textarea>
+                </div>
+                <div class="uk-margin uk-text-center">
+                    <button class="uk-button uk-button-default">Submit</button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+
+</section>
+
+<footer>
+    <div class="uk-background-muted uk-height-large">
+        <div class="uk-card uk-card-default uk-card-body uk-text-center uk-position-z-index" uk-sticky="position: bottom; end: !.uk-height-large">@Filmothèque</div>
+    </div>
+</footer>
+</body>
+</html>

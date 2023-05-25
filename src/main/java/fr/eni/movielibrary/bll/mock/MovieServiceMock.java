@@ -1,9 +1,9 @@
-package fr.eni.movielibrary.bll.service.mock;
+package fr.eni.movielibrary.bll.mock;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import fr.eni.movielibrary.bll.service.MovieService;
+import fr.eni.movielibrary.bll.MovieService;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
@@ -88,6 +88,7 @@ public class MovieServiceMock implements MovieService {
 
     @Override
     public Movie getMovieById(long id) {
+        System.out.println("service");
         for (Movie movie : lstMovies) {
             if (movie.getId() == id) {
                 return movie;

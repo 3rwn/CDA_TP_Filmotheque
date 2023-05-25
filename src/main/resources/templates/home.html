@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/uikit/css/uikit.min.css"/>
+    <script src="/uikit/js/uikit.min.js"></script>
+    <script src="/uikit/js/uikit-icons.min.js"></script>
+</head>
+<body>
+
+
+<header>
+    <h1 class="uk-heading-line uk-text-center"><span>Filmothèque</span></h1>
+</header>
+<section>
+<nav class="uk-navbar-container">
+    <div class="uk-container">
+        <div class="uk-navbar" >
+            <div class="uk-navbar-left">
+                <ul class="uk-navbar-nav">
+                    <li class="uk-active"><a th:href="@{'/'}">Home</a></li>
+                    <li><a th:href="@{'/movies'}">Liste des films</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+    <div class="uk-height-large uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light" data-src="https://images.pexels.com/photos/2398354/pexels-photo-2398354.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" uk-img>
+    </div>
+</section>
+<footer>
+    <div class="uk-background-muted uk-height-large">
+        <div class="uk-card uk-card-default uk-card-body uk-text-center uk-position-z-index" uk-sticky="position: bottom; end: !.uk-height-large">@Filmothèque</div>
+    </div>
+</footer>
+</body>
+</html>
